@@ -17,7 +17,7 @@ products = dd["products"]
 
 # Create list with all columns
 columns=['SKU', 'Manufacturer', 'Model', 'Price', 'Reviews', 'Color', 'Savings', 'Best Selling Rank',
-         'Screen Size Class', 'HDMI Ports', 'Product Weight', 'USB Ports', 'Network', 'Speaker Output',
+         'Review', 'Screen Size Class', 'HDMI Ports', 'Product Weight', 'USB Ports', 'Network', 'Speaker Output',
          'Product Depth', 'Electricity Use', 'Display Type', '3D', 'Screen Size', 'Refresh Rate']
 
 # Initialize 2 dictionaries to do the work
@@ -33,6 +33,7 @@ for i in products:
     intprod.append(i['color'])
     intprod.append(i['dollarSavings'])
     intprod.append(i['bestSellingRank'])
+    intprod.append(i['customerReviewAverage'])
     for y in i["details"]:
         if y["name"] == "Screen Size Class":
             intprod.append(y['value'])
@@ -60,7 +61,6 @@ for i in products:
             intprod.append(y['value'])
 
     totprod.append(intprod)
-    print(intprod)
     newDf = pd.DataFrame(totprod, columns=columns)
     print(newDf)
     intprod = []
